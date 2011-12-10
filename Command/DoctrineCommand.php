@@ -39,7 +39,8 @@ abstract class DoctrineCommand extends BaseCommand
         $configuration->registerMigrationsFromDirectory($dir);
         $configuration->setName($container->getParameter('doctrine_migrations.name'));
         $configuration->setMigrationsTableName($container->getParameter('doctrine_migrations.table_name'));
-        
+        $configuration->setIgnoredTableNames($container->getParameter('doctrine_migrations.ignored_tables'));
+
         self::injectContainerToMigrations($container, $configuration->getMigrations());
     }
 
